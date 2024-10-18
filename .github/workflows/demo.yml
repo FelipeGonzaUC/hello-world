@@ -1,0 +1,18 @@
+name: Demo
+run-name: Primera GitHub Action de ${{ github.actor }} ✨
+on: [push]
+jobs:
+  Mi-primera-GitHub-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 Evento de tipo ${{ github.event_name }}."
+      - run: echo "🐧 Job corriendo en ${{ runner.os }} en GitHub!"
+      - run: echo "🔎 Branch ${{ github.ref }} del repo ${{ github.repository }}."
+      - name: Clonando desde el repositorio 
+        uses: actions/checkout@v4
+      - run: echo "💡 El repo ${{ github.repository }} se clona en el runner."
+      - run: echo "🖥️ Workflow listo para ejecutar el runner."
+      - name: Listando los contenidos del repositorio
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 El status de este job es ${{ job.status }}."
